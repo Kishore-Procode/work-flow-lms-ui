@@ -1,0 +1,136 @@
+name: UI CI Pipeline
+
+on:
+  push:
+    branches:
+      - practice
+      - practice-main
+  pull_request:
+    branches:
+      - practice
+      - practice-main
+  workflow_dispatch:   # Enables manual build trigger for practice branch
+
+jobs:
+# ---------------------------
+# UNIT TEST JOB (COMMON)
+# ---------------------------
+  ui-tests:
+    name: UI Unit Tests
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: one_student_one-_treeUI
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: one_student_one-_treeUI/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test -- --watch=false
+
+# ---------------------------
+# OPTIONAL BUILD (PRACTICE)
+# ---------------------------
+  ui-build-optional:
+    name: UI Optional Build (Practice)
+    if: github.ref == 'refs/heads/practice'
+    needs: ui-tests
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: one_student_one-_treeUI
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+      - run: npm run build
+
+# ---------------------------
+# DEV QUALITY BUILD (MAIN)
+# ---------------------------
+  ui-dev-quality:
+    name: UI Dev Quality Check
+    if: github.ref == 'refs/heads/practice-main'
+    needs: ui-tests
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: one_student_one-_treeUI
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Lint check
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+# ---------------------------
+# DEV BUILD (MAIN)
+# ---------------------------
+  ui-dev-build:
+    name: UI Dev Build
+    if: github.ref == 'refs/heads/practice-main'
+    needs: ui-dev-quality
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: one_student_one-_treeUI
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+      - run: npm run build:dev
+
+# ---------------------------
+# PROD BUILD (MAIN)
+# ---------------------------
+  ui-prod-build:
+    name: UI Production Build
+    if: github.ref == 'refs/heads/practice-main'
+    needs: ui-dev-build
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: one_student_one-_treeUI
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+      - run: npm run build
