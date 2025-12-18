@@ -1,0 +1,1234 @@
+/* Import modern LMS design system */
+@import './styles/design-system.css';
+@import './styles/professional-lms.css';
+@import './styles/dark-theme-optimized.css';
+
+/* Custom utilities for mobile responsiveness */
+@layer utilities {
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  /* Ensure proper touch targets on mobile */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Safe area padding for iOS */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* OPTIMIZED DROPDOWN STYLING */
+select,
+.dropdown-select {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+select:focus,
+.dropdown-select:focus {
+  @apply shadow-md outline-none;
+}
+
+select option,
+.dropdown-select option {
+  @apply py-2 px-4;
+  background-color: white;
+  color: black;
+}
+
+select option:checked,
+.dropdown-select option:checked {
+  @apply bg-primary-100;
+}
+
+/* Dark mode dropdown options */
+@media (prefers-color-scheme: dark) {
+  select option,
+  .dropdown-select option {
+    background-color: #374151;
+    color: white;
+  }
+
+  select option:checked,
+  .dropdown-select option:checked {
+    background-color: #1d4ed8;
+  }
+}
+
+/* OPTIMIZED FORM STYLING */
+/* Enhanced form inputs and selects */
+.form-input,
+.form-select {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+}
+
+.form-input:focus,
+.form-select:focus {
+  @apply shadow-md;
+}
+
+/* Tab navigation styling */
+.tab-button {
+  @apply flex items-center space-x-2 px-4 py-3 text-sm font-medium border-b-2 transition-all duration-200;
+}
+
+.tab-button.active {
+  @apply border-primary-500 text-primary-600 bg-primary-50;
+}
+
+.tab-button.inactive {
+  @apply border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50;
+}
+
+/* Modal optimizations */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-2 sm:p-4 z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-xl max-w-4xl w-full max-h-[95vh] flex flex-col shadow-2xl;
+}
+
+.modal-header {
+  @apply flex items-center justify-between p-4 sm:p-6 border-b border-gray-200;
+}
+
+.modal-body {
+  @apply flex-1 overflow-y-auto p-4 sm:p-6;
+}
+
+.modal-footer {
+  @apply border-t border-gray-200 p-4 sm:p-6;
+}
+
+/* Form section styling */
+.form-section {
+  @apply space-y-6;
+}
+
+.form-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+}
+
+.form-grid-3 {
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-4;
+}
+
+/* Summary card styling */
+.summary-card {
+  @apply bg-blue-50 border border-blue-200 rounded-lg p-4;
+}
+
+.permissions-card {
+  @apply bg-gray-50 border border-gray-200 rounded-lg p-4;
+}
+
+/* Button styling */
+.btn-primary {
+  @apply bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-medium;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors font-medium;
+}
+
+/* Status badge styling */
+.status-badge {
+  @apply px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-badge.active {
+  @apply bg-success-100 text-success-800;
+}
+
+.status-badge.inactive {
+  @apply bg-red-100 text-red-800;
+}
+
+.status-badge.pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+/* COMPREHENSIVE MOBILE OPTIMIZATIONS */
+@media (max-width: 640px) {
+  /* Modal optimizations for mobile */
+  .modal-content {
+    @apply max-h-[98vh] m-1 rounded-t-xl rounded-b-none;
+  }
+
+  .modal-overlay {
+    @apply items-end;
+  }
+
+  /* Form optimizations */
+  .form-grid,
+  .form-grid-3 {
+    @apply grid-cols-1 gap-3;
+  }
+
+  /* Tab optimizations */
+  .tab-button span:last-child {
+    @apply hidden;
+  }
+
+  .tab-button {
+    @apply px-2 py-2 text-xs;
+  }
+
+  /* Button optimizations */
+  .btn-primary,
+  .btn-secondary {
+    @apply py-3 px-4 text-sm;
+  }
+
+  /* Table optimizations */
+  .table-container {
+    @apply overflow-x-auto;
+  }
+
+  .table-responsive {
+    @apply min-w-full;
+  }
+
+  /* Card optimizations */
+  .card-mobile {
+    @apply p-3 rounded-lg;
+  }
+
+  /* Navigation optimizations */
+  .nav-mobile {
+    @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-40;
+  }
+
+  /* Dashboard grid optimizations */
+  .dashboard-grid {
+    @apply grid-cols-1 gap-3;
+  }
+
+  /* Stats card optimizations */
+  .stats-card {
+    @apply p-3;
+  }
+
+  /* Search and filter optimizations */
+  .search-mobile {
+    @apply w-full mb-3;
+  }
+
+  .filter-mobile {
+    @apply flex flex-col space-y-2;
+  }
+
+  /* Sidebar optimizations */
+  .sidebar-mobile {
+    @apply fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out;
+  }
+
+  .sidebar-mobile.closed {
+    @apply -translate-x-full;
+  }
+
+  /* Header optimizations */
+  .header-mobile {
+    @apply px-3 py-2;
+  }
+
+  /* Content padding optimizations */
+  .content-mobile {
+    @apply px-3 py-4;
+  }
+
+  /* Form input optimizations */
+  .form-input,
+  .form-select {
+    @apply px-3 py-3 text-base;
+  }
+
+  /* Dropdown optimizations */
+  .dropdown-mobile {
+    @apply max-h-48 overflow-y-auto;
+  }
+}
+
+/* Medium screen optimizations */
+@media (max-width: 768px) {
+  /* Tablet-specific optimizations */
+  .tablet-grid {
+    @apply grid-cols-2 gap-4;
+  }
+
+  .tablet-modal {
+    @apply max-w-2xl;
+  }
+
+  /* Navigation adjustments */
+  .nav-tablet {
+    @apply px-4 py-3;
+  }
+}
+
+/* Large mobile screens */
+@media (max-width: 480px) {
+  /* Extra small screen optimizations */
+  .xs-text {
+    @apply text-sm;
+  }
+
+  .xs-padding {
+    @apply p-2;
+  }
+
+  .xs-margin {
+    @apply m-2;
+  }
+
+  /* Ultra-compact forms */
+  .form-compact {
+    @apply space-y-3;
+  }
+
+  .form-compact .form-input,
+  .form-compact .form-select {
+    @apply px-2 py-2 text-sm;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  .touch-friendly {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  .touch-button {
+    @apply py-3 px-4 text-base;
+  }
+
+  /* Larger tap targets */
+  .tap-target {
+    @apply p-3;
+  }
+
+  /* Improved hover states for touch */
+  .hover-touch:active {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
+}
+
+/* ENHANCED MOBILE NAVIGATION IMPROVEMENTS */
+/* Touch-friendly navigation buttons */
+.mobile-nav-button {
+  @apply flex flex-col items-center justify-center space-y-1 transition-all duration-200;
+  @apply min-h-[48px] min-w-[48px] p-2 rounded-lg;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply active:scale-95 active:bg-gray-100 dark:active:bg-gray-700;
+  /* Ensure proper touch target size */
+  touch-action: manipulation;
+}
+
+.mobile-nav-button:active {
+  transform: scale(0.95);
+}
+
+/* Enhanced mobile header buttons */
+.mobile-header-button {
+  @apply p-3 rounded-lg transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply active:scale-95 active:bg-gray-100 dark:active:bg-gray-700;
+  @apply min-h-[44px] min-w-[44px];
+  touch-action: manipulation;
+}
+
+/* Improved sidebar navigation for mobile */
+.mobile-sidebar-button {
+  @apply w-full flex items-center space-x-3 p-4 rounded-lg text-left transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply active:scale-[0.98] active:bg-gray-100 dark:active:bg-gray-700;
+  @apply min-h-[48px];
+  touch-action: manipulation;
+}
+
+/* Enhanced dropdown menu items for touch */
+.dropdown-menu-item {
+  @apply w-full flex items-center px-4 py-4 text-sm transition-colors duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  @apply active:bg-gray-100 dark:active:bg-gray-700;
+  @apply min-h-[48px];
+  touch-action: manipulation;
+}
+
+/* Accessibility improvements */
+.screen-reader-only {
+  @apply sr-only;
+}
+
+.focus-visible-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mobile-nav-button,
+  .mobile-header-button,
+  .mobile-sidebar-button {
+    @apply border border-gray-400 dark:border-gray-600;
+  }
+
+  .mobile-nav-button.active {
+    @apply border-primary-600 dark:border-primary-400;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-button,
+  .mobile-header-button,
+  .mobile-sidebar-button,
+  .dropdown-menu-item {
+    @apply transition-none;
+  }
+
+  .mobile-nav-button:active,
+  .mobile-header-button:active,
+  .mobile-sidebar-button:active {
+    transform: none;
+  }
+}
+
+/* Large text support */
+@media (prefers-font-size: large) {
+  .mobile-nav-button span,
+  .mobile-sidebar-button span {
+    @apply text-base;
+  }
+
+  .mobile-nav-button {
+    @apply min-h-[56px];
+  }
+
+  .mobile-sidebar-button {
+    @apply min-h-[56px];
+  }
+}
+
+/* SIMPLIFIED LAYOUT OPTIMIZATION */
+/* Basic responsive layout without complex viewport units */
+
+/* Root container - simple and reliable */
+.app-root {
+  @apply min-h-screen w-full overflow-x-hidden;
+}
+
+/* Content container - simplified */
+.content-container {
+  @apply flex-1 w-full overflow-x-hidden;
+}
+
+/* Responsive content padding */
+.content-padding {
+  @apply px-2 py-2;
+}
+
+@media (min-width: 480px) {
+  .content-padding {
+    @apply px-4 py-4;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-padding {
+    @apply px-6 py-6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-padding {
+    @apply px-8 py-8;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-padding {
+    @apply px-12 py-12;
+  }
+}
+
+/* Simplified responsive containers */
+.responsive-grid-container {
+  @apply w-full;
+}
+
+.responsive-container {
+  @apply w-full max-w-7xl mx-auto px-4;
+}
+
+@media (min-width: 1200px) {
+  .responsive-grid-container {
+    @apply gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* Flexible card containers */
+.responsive-card-container {
+  @apply w-full;
+  /* Prevent cards from becoming too wide */
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .responsive-card-container {
+    max-width: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-card-container {
+    max-width: calc(33.333% - 1rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-card-container {
+    max-width: calc(25% - 1rem);
+  }
+}
+
+/* Scrollable content areas */
+.scrollable-content {
+  @apply overflow-y-auto overflow-x-hidden;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Flexible layout utilities */
+.flex-container-responsive {
+  @apply flex flex-col space-y-2;
+}
+
+@media (min-width: 768px) {
+  .flex-container-responsive {
+    @apply flex-row space-y-0 space-x-4;
+  }
+}
+
+/* Text overflow handling */
+.text-overflow-responsive {
+  @apply truncate;
+}
+
+@media (min-width: 768px) {
+  .text-overflow-responsive {
+    @apply text-clip overflow-visible;
+    white-space: normal;
+  }
+}
+
+/* Image responsive containers */
+.image-container-responsive {
+  @apply w-full h-auto;
+  /* Prevent images from exceeding container */
+  max-width: 100%;
+  height: auto;
+}
+
+/* Table responsive wrapper */
+.table-responsive-wrapper {
+  @apply w-full overflow-x-auto;
+  /* Ensure tables don't break layout */
+  min-width: 0;
+}
+
+.table-responsive-wrapper table {
+  @apply min-w-full;
+}
+
+/* Form responsive improvements */
+.form-responsive-wrapper {
+  @apply w-full;
+}
+
+.form-responsive-wrapper .form-row {
+  @apply flex flex-col space-y-2;
+}
+
+@media (min-width: 768px) {
+  .form-responsive-wrapper .form-row {
+    @apply flex-row space-y-0 space-x-4;
+  }
+}
+
+/* Modal responsive improvements */
+.modal-responsive {
+  @apply w-full max-w-sm mx-auto;
+}
+
+@media (min-width: 480px) {
+  .modal-responsive {
+    @apply max-w-md;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-responsive {
+    @apply max-w-lg;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal-responsive {
+    @apply max-w-2xl;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-responsive {
+    @apply max-w-4xl;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 896px) and (orientation: landscape) {
+  .landscape-mobile {
+    @apply h-screen overflow-hidden;
+  }
+
+  .landscape-content {
+    @apply h-full overflow-y-auto;
+  }
+}
+
+/* FOOTER OVERLAP PREVENTION AND Z-INDEX LAYERING */
+/* Ensure proper layering hierarchy */
+.z-layer-base {
+  z-index: 1;
+}
+
+.z-layer-content {
+  z-index: 10;
+}
+
+.z-layer-header {
+  z-index: 20;
+}
+
+.z-layer-sidebar {
+  z-index: 30;
+}
+
+.z-layer-navigation {
+  z-index: 40;
+}
+
+.z-layer-dropdown {
+  z-index: 50;
+}
+
+.z-layer-modal {
+  z-index: 60;
+}
+
+.z-layer-toast {
+  z-index: 70;
+}
+
+.z-layer-devtools {
+  z-index: 99999;
+}
+
+/* Main layout container improvements */
+.main-layout-container {
+  @apply min-h-screen flex flex-col;
+  /* Ensure container takes full viewport height */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+}
+
+/* Content area with proper spacing for mobile navigation */
+.main-content-area {
+  @apply flex-1 overflow-y-auto;
+  /* Add bottom padding on mobile to prevent overlap with bottom navigation */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 1024px) {
+  .main-content-area {
+    /* Add extra bottom padding for mobile navigation */
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Mobile navigation improvements */
+.mobile-navigation-bar {
+  @apply fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700;
+  z-index: 40;
+  /* Add safe area padding for devices with home indicators */
+  padding-bottom: env(safe-area-inset-bottom);
+  /* Ensure it stays above content during zoom */
+  position: fixed !important;
+}
+
+/* Prevent content from being hidden behind fixed elements */
+.content-with-mobile-nav {
+  /* Add bottom margin to prevent overlap */
+  margin-bottom: calc(4rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  .content-with-mobile-nav {
+    margin-bottom: 0;
+  }
+}
+
+/* Zoom-level specific adjustments */
+@media screen and (min-resolution: 1.25dppx) {
+  /* 125% zoom adjustments */
+  .mobile-navigation-bar {
+    height: 4.2rem;
+  }
+
+  .main-content-area {
+    padding-bottom: calc(4.2rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media screen and (min-resolution: 1.5dppx) {
+  /* 150% zoom adjustments */
+  .mobile-navigation-bar {
+    height: 4.5rem;
+  }
+
+  .main-content-area {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media screen and (min-resolution: 2dppx) {
+  /* 200% zoom adjustments */
+  .mobile-navigation-bar {
+    height: 5rem;
+  }
+
+  .main-content-area {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Sticky header improvements */
+.sticky-header {
+  @apply sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700;
+  z-index: 20;
+  /* Ensure header stays visible during zoom */
+  position: sticky !important;
+}
+
+/* Dropdown and modal positioning improvements */
+.dropdown-menu {
+  z-index: 50;
+  /* Ensure dropdowns appear above all content */
+  position: absolute !important;
+}
+
+.modal-overlay {
+  z-index: 60;
+  /* Ensure modals appear above everything */
+  position: fixed !important;
+}
+
+/* Prevent horizontal scroll on zoom */
+.prevent-horizontal-scroll {
+  overflow-x: hidden;
+}
+
+/* React Query DevTools styling fixes - AGGRESSIVE OVERRIDES */
+/* Target the button specifically */
+button[data-rq-devtools-button] {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 99999 !important;
+  background: #3b82f6 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+}
+
+/* Target all possible panel selectors */
+[data-rq-devtools-panel],
+div[data-rq-devtools-panel],
+[data-floating-ui-portal] > div,
+[data-floating-ui-portal] [data-rq-devtools-panel] {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 99998 !important;
+  max-width: calc(100vw - 40px) !important;
+  max-height: calc(100vh - 100px) !important;
+  transform: none !important;
+  transform-origin: bottom left !important;
+  background: white !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Override Floating UI portal positioning */
+div[data-floating-ui-portal] {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 99998 !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Force any nested divs to respect positioning */
+[data-floating-ui-portal] > div > div {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+}
+
+/* Override any animation or transition that might interfere */
+[data-rq-devtools-panel] * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Ensure the panel content is visible */
+[data-rq-devtools-panel] > div {
+  max-height: calc(100vh - 120px) !important;
+  overflow-y: auto !important;
+}
+
+/* Additional specific targeting for React Query DevTools v5 */
+[data-rq="devtools"] {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 99999 !important;
+}
+
+[data-rq="devtools-panel"] {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  z-index: 99998 !important;
+}
+
+/* Target by class names that might be used */
+.rq-devtools {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 99999 !important;
+}
+
+.rq-devtools-panel {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  z-index: 99998 !important;
+}
+
+/* Ultimate override - target everything possible */
+*[style*="position"] {
+  /* This will be overridden by our specific selectors */
+}
+
+/* Force positioning with highest specificity */
+html body [data-rq-devtools-panel],
+html body div[data-rq-devtools-panel],
+html body [data-floating-ui-portal] > div,
+html body [data-floating-ui-portal] [data-rq-devtools-panel] {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 99998 !important;
+  transform: none !important;
+}
+
+/* Force button positioning */
+html body button[data-rq-devtools-button],
+html body [data-rq-devtools] button {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  z-index: 99999 !important;
+}
+
+/* Nuclear option - override ALL positioning for DevTools */
+[data-floating-ui-portal] {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 99998 !important;
+  width: auto !important;
+  height: auto !important;
+  transform: none !important;
+  transform-origin: bottom left !important;
+}
+
+[data-floating-ui-portal] > * {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  top: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* Override any animation or transition */
+[data-floating-ui-portal],
+[data-floating-ui-portal] * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Specific targeting for React Query DevTools v5 */
+div[data-floating-ui-portal]:has([data-rq-devtools-panel]) {
+  position: fixed !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  top: auto !important;
+  z-index: 99998 !important;
+}
+
+/* Login page footer overlap prevention */
+/* Ensure footer doesn't overlap with login content at high zoom levels */
+@media screen and (min-resolution: 125dpi) {
+  .login-footer {
+    bottom: 1rem !important;
+  }
+}
+
+@media screen and (min-resolution: 150dpi) {
+  .login-footer {
+    bottom: 1.5rem !important;
+  }
+}
+
+@media screen and (min-resolution: 200dpi) {
+  .login-footer {
+    bottom: 2rem !important;
+  }
+}
+
+/* Zoom level specific adjustments */
+@media screen and (min-zoom: 1.25) {
+  .login-footer {
+    bottom: 1rem !important;
+  }
+}
+
+@media screen and (min-zoom: 1.5) {
+  .login-footer {
+    bottom: 1.5rem !important;
+  }
+}
+
+@media screen and (min-zoom: 2) {
+  .login-footer {
+    bottom: 2rem !important;
+  }
+}
+
+/* COMPREHENSIVE RESPONSIVE BREAKPOINTS */
+/* Extra Small Mobile (320px+) */
+@media (min-width: 320px) {
+  .responsive-container {
+    @apply px-2 py-2;
+  }
+
+  .responsive-text-xs {
+    @apply text-xs;
+  }
+
+  .responsive-grid-xs {
+    @apply grid-cols-1 gap-2;
+  }
+
+  .responsive-button-xs {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .responsive-card-xs {
+    @apply p-2 rounded-md;
+  }
+}
+
+/* Small Mobile (480px+) */
+@media (min-width: 480px) {
+  .responsive-container {
+    @apply px-3 py-3;
+  }
+
+  .responsive-text-sm {
+    @apply text-sm;
+  }
+
+  .responsive-grid-sm {
+    @apply grid-cols-1 gap-3;
+  }
+
+  .responsive-button-sm {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .responsive-card-sm {
+    @apply p-3 rounded-lg;
+  }
+
+  /* Improved form layouts for small screens */
+  .form-responsive-sm {
+    @apply space-y-3;
+  }
+
+  .form-responsive-sm .form-input,
+  .form-responsive-sm .form-select {
+    @apply px-3 py-2 text-sm;
+  }
+}
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .responsive-container {
+    @apply px-4 py-4;
+  }
+
+  .responsive-text-md {
+    @apply text-base;
+  }
+
+  .responsive-grid-md {
+    @apply grid-cols-2 gap-4;
+  }
+
+  .responsive-button-md {
+    @apply px-4 py-2 text-base;
+  }
+
+  .responsive-card-md {
+    @apply p-4 rounded-lg;
+  }
+
+  /* Tablet-specific layouts */
+  .tablet-sidebar {
+    @apply w-64;
+  }
+
+  .tablet-content {
+    @apply ml-64;
+  }
+
+  .tablet-modal {
+    @apply max-w-2xl;
+  }
+
+  /* Enhanced navigation for tablets */
+  .tablet-nav {
+    @apply flex-row space-x-4 space-y-0;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .responsive-container {
+    @apply px-6 py-6;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg;
+  }
+
+  .responsive-grid-lg {
+    @apply grid-cols-3 gap-6;
+  }
+
+  .responsive-button-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .responsive-card-lg {
+    @apply p-6 rounded-xl;
+  }
+
+  /* Desktop-specific layouts */
+  .desktop-sidebar {
+    @apply w-72;
+  }
+
+  .desktop-content {
+    @apply ml-72;
+  }
+
+  .desktop-modal {
+    @apply max-w-4xl;
+  }
+
+  /* Enhanced desktop navigation */
+  .desktop-nav {
+    @apply flex-row justify-between;
+  }
+
+  /* Desktop-specific dashboard grids */
+  .desktop-dashboard-grid {
+    @apply grid-cols-4 gap-6;
+  }
+}
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .responsive-container {
+    @apply px-8 py-8;
+  }
+
+  .responsive-text-xl {
+    @apply text-xl;
+  }
+
+  .responsive-grid-xl {
+    @apply grid-cols-4 gap-8;
+  }
+
+  .responsive-button-xl {
+    @apply px-8 py-3 text-lg;
+  }
+
+  .responsive-card-xl {
+    @apply p-8 rounded-xl;
+  }
+
+  /* Large desktop layouts */
+  .xl-sidebar {
+    @apply w-80;
+  }
+
+  .xl-content {
+    @apply ml-80;
+  }
+
+  .xl-modal {
+    @apply max-w-6xl;
+  }
+
+  /* Enhanced large desktop grids */
+  .xl-dashboard-grid {
+    @apply grid-cols-5 gap-8;
+  }
+}
+
+/* Extra Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  .responsive-container {
+    @apply px-12 py-12 max-w-7xl mx-auto;
+  }
+
+  .responsive-grid-2xl {
+    @apply grid-cols-6 gap-12;
+  }
+
+  .responsive-card-2xl {
+    @apply p-12 rounded-2xl;
+  }
+
+  /* Ultra-wide layouts */
+  .xxl-dashboard-grid {
+    @apply grid-cols-6 gap-12;
+  }
+}

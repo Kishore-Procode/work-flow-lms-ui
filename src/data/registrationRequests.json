@@ -1,0 +1,28 @@
+[
+  {
+    "id": "req-001",
+    "email": "newstudent@student.gvec.edu",
+    "name": "Priya Patel",
+    "role": "student",
+    "phone": "+1-555-0402",
+    "status": "pending",
+    "requestedAt": "2024-01-19T16:30:00Z",
+    "collegeId": "college-001",
+    "departmentId": "computer-science",
+    "class": "CS-2B",
+    "rollNumber": "CS22045",
+    "reviewedBy": null
+  },
+  {
+    "id": "req-002",
+    "email": "newprincipal@college.edu",
+    "name": "Dr. Robert Smith",
+    "role": "principal",
+    "phone": "+1-555-0103",
+    "status": "pending",
+    "requestedAt": "2024-01-20T08:00:00Z",
+    "collegeId": null,
+    "collegeName": "Tech Valley Institute",
+    "reviewedBy": null
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "id": "inv-001",
+    "email": "principal@gvec.edu",
+    "role": "principal",
+    "status": "accepted",
+    "sentBy": "admin-001",
+    "sentAt": "2024-01-15T09:00:00Z",
+    "acceptedAt": "2024-01-15T09:15:00Z",
+    "collegeId": "college-001"
+  },
+  {
+    "id": "inv-002",
+    "email": "hod.cs@gvec.edu",
+    "role": "hod",
+    "status": "accepted",
+    "sentBy": "principal-001",
+    "sentAt": "2024-01-16T10:30:00Z",
+    "acceptedAt": "2024-01-16T11:00:00Z",
+    "collegeId": "college-001",
+    "departmentId": "computer-science"
+  },
+  {
+    "id": "inv-003",
+    "email": "newstaff@gvec.edu",
+    "role": "staff",
+    "status": "pending",
+    "sentBy": "hod-001",
+    "sentAt": "2024-01-19T14:00:00Z",
+    "collegeId": "college-001",
+    "departmentId": "computer-science"
+  }
+]

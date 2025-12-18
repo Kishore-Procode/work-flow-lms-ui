@@ -1,0 +1,30 @@
+[
+  {
+    "id": "college-001",
+    "name": "blue Valley Engineering College",
+    "address": "123 College Street, Tech City, TC 12345",
+    "phone": "+1-555-0101",
+    "email": "info@gvec.edu",
+    "website": "https://gvec.edu",
+    "established": "1985",
+    "principalId": "principal-001",
+    "status": "active",
+    "departments": ["computer-science", "electrical", "mechanical", "civil"],
+    "createdAt": "2024-01-15T09:00:00Z",
+    "updatedAt": "2024-01-15T09:00:00Z"
+  },
+  {
+    "id": "college-002",
+    "name": "Sunrise Medical College",
+    "address": "456 Health Avenue, Med City, MC 67890",
+    "phone": "+1-555-0102",
+    "email": "admin@smc.edu",
+    "website": "https://smc.edu",
+    "established": "1990",
+    "principalId": "principal-002",
+    "status": "active",
+    "departments": ["medicine", "nursing", "pharmacy", "physiotherapy"],
+    "createdAt": "2024-01-16T10:30:00Z",
+    "updatedAt": "2024-01-16T10:30:00Z"
+  }
+]

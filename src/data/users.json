@@ -1,0 +1,66 @@
+[
+  {
+    "id": "admin-001",
+    "email": "admin@system.edu",
+    "name": "System Administrator",
+    "role": "admin",
+    "phone": "+1-555-0001",
+    "status": "active",
+    "collegeId": null,
+    "departmentId": null,
+    "createdAt": "2024-01-01T00:00:00Z",
+    "lastLogin": "2024-01-20T08:30:00Z"
+  },
+  {
+    "id": "principal-001",
+    "email": "principal@gvec.edu",
+    "name": "Dr. Sarah Johnson",
+    "role": "principal",
+    "phone": "+1-555-0101",
+    "status": "active",
+    "collegeId": "college-001",
+    "departmentId": null,
+    "createdAt": "2024-01-15T09:15:00Z",
+    "lastLogin": "2024-01-20T07:45:00Z"
+  },
+  {
+    "id": "hod-001",
+    "email": "hod.cs@gvec.edu",
+    "name": "Prof. Michael Chen",
+    "role": "hod",
+    "phone": "+1-555-0201",
+    "status": "active",
+    "collegeId": "college-001",
+    "departmentId": "computer-science",
+    "createdAt": "2024-01-16T11:00:00Z",
+    "lastLogin": "2024-01-19T16:20:00Z"
+  },
+  {
+    "id": "staff-001",
+    "email": "staff.kumar@gvec.edu",
+    "name": "Raj Kumar",
+    "role": "staff",
+    "phone": "+1-555-0301",
+    "status": "active",
+    "collegeId": "college-001",
+    "departmentId": "computer-science",
+    "classInCharge": "CS-3A",
+    "createdAt": "2024-01-17T12:30:00Z",
+    "lastLogin": "2024-01-20T06:15:00Z"
+  },
+  {
+    "id": "student-001",
+    "email": "akash@student.gvec.edu",
+    "name": "Akash Sharma",
+    "role": "student",
+    "phone": "+1-555-0401",
+    "status": "active",
+    "collegeId": "college-001",
+    "departmentId": "computer-science",
+    "class": "CS-3A",
+    "semester": "6th",
+    "rollNumber": "CS20001",
+    "createdAt": "2024-01-18T14:00:00Z",
+    "lastLogin": "2024-01-20T09:00:00Z"
+  }
+]

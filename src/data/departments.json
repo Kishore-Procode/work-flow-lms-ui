@@ -1,0 +1,32 @@
+[
+  {
+    "id": "computer-science",
+    "name": "Computer Science & Engineering",
+    "code": "CSE",
+    "collegeId": "college-001",
+    "hodId": "hod-001",
+    "totalStudents": 120,
+    "totalStaff": 8,
+    "established": "1985"
+  },
+  {
+    "id": "electrical",
+    "name": "Electrical Engineering",
+    "code": "EEE",
+    "collegeId": "college-001",
+    "hodId": null,
+    "totalStudents": 80,
+    "totalStaff": 6,
+    "established": "1987"
+  },
+  {
+    "id": "medicine",
+    "name": "General Medicine",
+    "code": "MD",
+    "collegeId": "college-002",
+    "hodId": null,
+    "totalStudents": 60,
+    "totalStaff": 12,
+    "established": "1990"
+  }
+]

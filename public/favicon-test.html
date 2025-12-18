@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Test - Student - ACT</title>
+    
+    <!-- Test the favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/icons/icon-32x32.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/icons/icon-16x16.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        .icon-item img {
+            max-width: 64px;
+            height: 64px;
+            margin-bottom: 8px;
+        }
+        .icon-item p {
+            margin: 0;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Favicon & Icon Test</h1>
+    
+    <div id="status"></div>
+    
+    <h2>📱 PWA Icons</h2>
+    <div class="icon-grid">
+        <div class="icon-item">
+            <img src="/favicon.svg" alt="Favicon">
+            <p>favicon.svg</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-16x16.svg" alt="16x16">
+            <p>16x16</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-32x32.svg" alt="32x32">
+            <p>32x32</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-72x72.svg" alt="72x72">
+            <p>72x72</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-96x96.svg" alt="96x96">
+            <p>96x96</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-144x144.svg" alt="144x144">
+            <p>144x144</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-192x192.svg" alt="192x192">
+            <p>192x192</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/icon-512x512.svg" alt="512x512">
+            <p>512x512</p>
+        </div>
+    </div>
+    
+    <h2>🔗 Shortcut Icons</h2>
+    <div class="icon-grid">
+        <div class="icon-item">
+            <img src="/icons/camera-96x96.svg" alt="Camera">
+            <p>Camera</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/tree-96x96.svg" alt="Tree">
+            <p>Tree</p>
+        </div>
+        <div class="icon-item">
+            <img src="/icons/search-96x96.svg" alt="Search">
+            <p>Search</p>
+        </div>
+    </div>
+    
+    <h2>🔧 Troubleshooting</h2>
+    <ul>
+        <li>✅ All icons are now SVG format for better quality</li>
+        <li>✅ Manifest.json updated with correct paths</li>
+        <li>✅ HTML favicon links updated</li>
+        <li>✅ Service worker cache cleared</li>
+        <li>✅ Browser cache should be cleared automatically</li>
+    </ul>
+    
+    <p><strong>Next steps:</strong></p>
+    <ol>
+        <li>Hard refresh your main application (Ctrl+Shift+R or Cmd+Shift+R)</li>
+        <li>Check browser developer tools for any remaining 404 errors</li>
+        <li>Verify the favicon appears in the browser tab</li>
+    </ol>
+    
+    <script>
+        // Test icon loading
+        const statusDiv = document.getElementById('status');
+        let loadedIcons = 0;
+        let totalIcons = 0;
+        
+        document.querySelectorAll('.icon-item img').forEach(img => {
+            totalIcons++;
+            img.onload = () => {
+                loadedIcons++;
+                updateStatus();
+            };
+            img.onerror = () => {
+                console.error('Failed to load:', img.src);
+                updateStatus();
+            };
+        });
+        
+        function updateStatus() {
+            if (loadedIcons === totalIcons) {
+                statusDiv.innerHTML = '<div class="status success">✅ All icons loaded successfully!</div>';
+            } else {
+                statusDiv.innerHTML = `<div class="status">Loading icons... ${loadedIcons}/${totalIcons}</div>`;
+            }
+        }
+        
+        // Initial status
+        updateStatus();
+        
+        // Test manifest
+        fetch('/manifest.json')
+            .then(response => response.json())
+            .then(manifest => {
+                console.log('✅ Manifest loaded successfully:', manifest);
+            })
+            .catch(error => {
+                console.error('❌ Manifest loading failed:', error);
+            });
+    </script>
+</body>
+</html>
